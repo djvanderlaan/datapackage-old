@@ -47,7 +47,7 @@ dpresource <- function(meta, resource = 1) {
 #' Returns the original \code{meta} object with the new resource added. 
 #'
 #' @export
-add_resource <- function(meta, data, name, title, description = "", 
+dpadd_resource <- function(meta, data, name, title, description = "", 
     replace = FALSE, inline_data = FALSE) {
   if (!is.data.frame(data)) stop("data needs to be a data.frame.")
   if (missing(name)) name <- deparse(substitute(data))

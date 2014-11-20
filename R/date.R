@@ -26,6 +26,10 @@ format_column_date <- function(x, meta) {
   res
 }
 
+ft_is_date <- function(field, name) {
+  if (!is(field, "Date")) return(NULL)
+  list(type = "date")
+}
 
 extract_date_part <- function(x, pattern, format, default = NA, 
     required = FALSE) {
@@ -36,10 +40,5 @@ extract_date_part <- function(x, pattern, format, default = NA,
     return (rep(default, length(x)))
   }
   as.integer(substr(x, pos, pos2))
-}
-
-ft_is_date <- function(field, name) {
-  if (!is(field, "Date")) return(NULL)
-  list(type = "date")
 }
 

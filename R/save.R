@@ -1,4 +1,21 @@
 
+#' Save a datapackage with resources
+#'
+#' @param meta the \code{\link{datapackage}} object to save. 
+#' @param path the directory in which to save the \code{\link{datapackage}}
+#' @param ... the data of the resources. See details.
+#' 
+#' @details
+#' Since the data belonging to the resources is not stored in the 
+#' \code{\link{datapackage}} object. the data of each of the resources in the
+#' \code{\link{datapackage}} needs to be passed to the \code{dpsave} function 
+#' as additional argument as \code{<resourcename>=<data.frame>}. 
+#'
+#' When \code{path} does not exist it is created. Any files existing in 
+#' \code{path} are overwritten. 
+#'
+#' @importFrom jsonlite toJSON 
+#' @export
 dpsave <- function(meta, path, ...) {
   # create directory
   tst <- file.info(path)
@@ -53,13 +70,12 @@ dpsave <- function(meta, path, ...) {
 #'   index, or a character with the name of the resource. 
 #' @param data the data of the resource. When omitted the \code{data} element 
 #'   of the resource is used (if present).
-#' @param path folder in which to save the data.
+#' @param filename folder in which to save the data.
 #'
 #' @return 
-#' Returns the \code{datapackage} object with the new path, and filename of the 
-#' resource.
+#' Returns the \code{\link{dpresource}} object with the new path, and filename 
+#' of the resource.
 #' 
-#' @export
 save_resource <- function(meta, resource, data, filename) {
   res <- dpresource(meta, resource)
   # check data
@@ -87,6 +103,14 @@ save_resource <- function(meta, resource, data, filename) {
   res
 }
 
+#' Convert a data column to character for saving
+#'
+#' @param x the column to convert.
+#' @param meta the \code{\link{dpfield}} object belonging to the field.
+#'
+#' @return
+#' The input column converted to character column.
+#'
 format_column <- function(x, meta) {
   type <- meta$type
   if (!is.character(type)) stop("type should be a character vector.")

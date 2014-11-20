@@ -25,7 +25,7 @@ datapackage <- function(name, title, description="", data) {
     stop("description needs to be a character vector with length one.")
   meta <- list(name=name, title=title, description=description)
   meta$resources <- list()
-  if (!missing(data)) meta <- add_resource(meta, data, name=name, title=title)
+  if (!missing(data)) meta <- dpadd_resource(meta, data, name=name, title=title)
   structure(meta, class="datapackage")
 }
 

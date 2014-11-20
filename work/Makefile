@@ -9,7 +9,7 @@ build:
 	R CMD build ../
 
 check:
-	R CMD check --as-cran `ls datapackage*.tar.gz | tail -n 1`
+	R CMD check `ls datapackage*.tar.gz | tail -n 1`
 
 install:
 	R CMD INSTALL `ls datapackage*.tar.gz | tail -n 1`
