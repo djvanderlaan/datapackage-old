@@ -1,7 +1,7 @@
 
 cast_column_datetime <- function(x, format) {
   x[x == ""] <- NA
-  as.POSIXct(strptime(x, "%Y-%m-%dT%H:%M:%SZ", tz="GMT"))
+  as.POSIXct(strptime(x, "%Y-%m-%dT%H:%M:%SZ"))
 }
 
 format_column_datetime <- function(x, meta) {
