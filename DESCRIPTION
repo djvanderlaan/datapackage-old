@@ -1,0 +1,15 @@
+Package: datapackage
+Type: Package
+Title: Reading and writing files in the tabular datapackage format
+Version: 0.1
+Date: 2014-11-11
+Author: D.J. van der Laan <djvanderlaan@unrealizedtime.nl>
+Maintainer: D.J. van der Laan <djvanderlaan@unrealizedtime.nl>
+Description: Reading and writing files in the tabular datapackage format
+License: GPL-3
+Suggests:
+    RCurl,
+    testthat
+Imports:
+    jsonlite,
+    yaml
