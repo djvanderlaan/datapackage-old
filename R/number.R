@@ -4,7 +4,7 @@ cast_column_number <- function(x, format) {
 }
 
 format_column_number <- function(x, meta) {
-  res <- format.default(x, trim=TRUE)
+  res <- formatC(x)
   res[is.na(x)] <- ""
   res
 }

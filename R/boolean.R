@@ -16,6 +16,6 @@ format_column_boolean <- function(x, meta) {
 
 ft_is_boolean <- function(field, name) {
   if (!is.logical(field)) return(NULL)
-  list(type = "number")
+  list(type = "boolean")
 }
 
