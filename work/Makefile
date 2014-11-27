@@ -1,6 +1,6 @@
 
 
-.PHONY: build, check
+.PHONY: build check install test
 
 all: build check
 
@@ -8,8 +8,12 @@ build:
 	R --silent -e "library(roxygen2); roxygenise(\"../\")"
 	R CMD build ../
 
-check:
+check: build
 	R CMD check `ls datapackage*.tar.gz | tail -n 1`
 
-install:
+install: build
 	R CMD INSTALL `ls datapackage*.tar.gz | tail -n 1`
+
+test: 
+	Rscript test.R
+
