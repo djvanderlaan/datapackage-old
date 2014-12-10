@@ -1,5 +1,0 @@
-integer,string,number,date,datetime,boolean
-1,jan,12.12344,2050-12-31,2050-12-31T14:12:33Z,true
-2,pier,-1212.6,,2014-01-01T00:00:01Z,false
-3,tjorres,0,1900-05-04,,true
-4,korneel,,2010-11-30,2010-11-30T23:55:00Z,
