@@ -28,6 +28,9 @@ data$time <- round(data$time, "secs")
 
 # add some missing values
 for (col in names(data)) {
+  # skip character columns; missing values in character columns can not be 
+  # distinguished from empty strings
+  if (is.character(data[[col]])) next
   is.na(data[[col]]) <- rbinom(100, 1, 0.1) > 0.5
 }
 
