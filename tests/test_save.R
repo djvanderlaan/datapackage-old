@@ -1,7 +1,5 @@
 library(testthat)
 
-set.seed(9)
-
 generate_strings <- function(n, lmin, lmax) {
   nchar <- sample(seq.int(lmin, lmax), n, replace=TRUE)
   res <- character(n)
