@@ -1,7 +1,7 @@
 
 cast_column_date <- function(x, meta) {
   format <- "yyyy-mm-dd"
-  if (!missing(meta) && !is.null(meta) && meta$format != "")
+  if (!missing(meta) && !is.null(meta) && !is.null(meta$format) && meta$format != "")
     format <- meta$format
   format <- tolower(format)
 
@@ -12,7 +12,6 @@ cast_column_date <- function(x, meta) {
   dates <- sprintf("%04d-%02d-%02d", year, month, day)
   dates[is.na(x)] <- NA
   as.Date(dates)
-  #as.Date(sprintf("%04d-%02d-%02d", year, month, day))
 }
 
 format_column_date <- function(x, meta) {

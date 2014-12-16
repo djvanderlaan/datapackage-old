@@ -27,4 +27,6 @@ expect_that(datapackage:::ft_is_date(c(0,0)),equals(NULL))
 
 # regression test: error when first date is an empty string
 d <- datapackage:::cast_column_date(c("", "2010-11-12"), list(format=""))
+# regression test: error when format missing from meta
+d <- datapackage:::cast_column_date(c("", "2010-11-12"), list())
 
