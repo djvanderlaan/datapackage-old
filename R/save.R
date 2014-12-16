@@ -21,7 +21,7 @@ dpsave <- function(meta, path, ...) {
   tst <- file.info(path)
   if (!is.na(tst$isdir) && !tst$isdir)
     stop("'", path, "' already exists and is not a directory")
-  dir.create(path, showWarnings=FALSE)
+  dir.create(path, showWarnings=FALSE, recursive = TRUE)
   tst <- file.info(path)
   if (is.na(tst$isdir) || !tst$isdir)
     stop("Creation of directory '", path, "' failed.")
