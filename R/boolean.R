@@ -1,5 +1,5 @@
 
-cast_column_boolean <- function(x, format) {
+cast_column_boolean <- function(x, meta) {
   na <- x == ""
   true <- grepl("^[[:space:]]*(T|TRUE|true|1)[[:space:]]*$", x)
   false <- grepl("^[[:space:]]*(F|FALSE|false|0)[[:space:]]*$", x)

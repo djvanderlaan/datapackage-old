@@ -1,5 +1,5 @@
 
-cast_column_integer <- function(x, format) {
+cast_column_integer <- function(x, meta) {
   y <- as.integer(x)
   if (!isTRUE(all.equal(y, round(as.numeric(x)))))
     warning("Some non integer values are truncated.")

@@ -1,5 +1,7 @@
 library(testthat)
 
+set.seed(9)
+
 generate_strings <- function(n, lmin, lmax) {
   nchar <- sample(seq.int(lmin, lmax), n, replace=TRUE)
   res <- character(n)
@@ -19,6 +21,7 @@ data <- data.frame(
   date = as.Date(sample(1:50000, 100), origin="1970-01-01"),
   time = as.POSIXct(runif(100, 0, 5E9), origin="1970-01-01"),
   string = generate_strings(100, 0, 10),
+  factor = as.factor(sample(c("male", "female"), 10, replace=TRUE)),
   stringsAsFactors=FALSE
 )
 # need to round the time; since we now have fractional seconds (from runif);

@@ -1,5 +1,5 @@
 
-cast_column_datetime <- function(x, format) {
+cast_column_datetime <- function(x, meta) {
   x[x == ""] <- NA
   as.POSIXct(strptime(x, "%Y-%m-%dT%H:%M:%SZ", tz="GMT"))
 }

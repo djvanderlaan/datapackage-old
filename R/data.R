@@ -47,7 +47,7 @@ dpdata <- function(meta, resource = 1) {
   # convert each of the fields to the right R-type
   for (field in fields) {
     fieldmeta <- dpfield(meta, field, resource)
-    data[[field]] <- cast_column(data[[field]], fieldmeta$type, fieldmeta$format)
+    data[[field]] <- cast_column(data[[field]], fieldmeta)
   }
   data
 }

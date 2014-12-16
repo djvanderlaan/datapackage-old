@@ -1,5 +1,5 @@
 
-cast_column_number <- function(x, format) {
+cast_column_number <- function(x, meta) {
   as.numeric(x)
 }
 

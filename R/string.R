@@ -1,5 +1,5 @@
 
-cast_column_string <- function(x, format) {
+cast_column_string <- function(x, meta) {
   x
 }
 

@@ -1,7 +1,8 @@
 
-cast_column_date <- function(x, format) {
-  if (missing(format) || is.null(format) || format == "")
-    format <- "yyyy-mm-dd"
+cast_column_date <- function(x, meta) {
+  format <- "yyyy-mm-dd"
+  if (!missing(meta) && !is.null(meta) && meta$format != "")
+    format <- meta$format
   format <- tolower(format)
 
   x[x == ""] <- NA
@@ -9,7 +10,9 @@ cast_column_date <- function(x, format) {
   month <- extract_date_part(x, "mm", format, 1)
   day <- extract_date_part(x, "dd", format, 1)
   dates <- sprintf("%04d-%02d-%02d", year, month, day)
-  as.Date(sprintf("%04d-%02d-%02d", year, month, day))
+  dates[is.na(x)] <- NA
+  as.Date(dates)
+  #as.Date(sprintf("%04d-%02d-%02d", year, month, day))
 }
 
 format_column_date <- function(x, meta) {
