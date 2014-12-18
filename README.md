@@ -25,9 +25,21 @@ pkg <- dpadd_resource(pkg, data=iris, name="iris",
   title="Edgar Anderson's Iris Data")
 
 pkg <- dpadd_resource(pkg, data=as.data.frame(Titanic), name="titanic",
-  title="Survival of Passengers on the Titanic"
+  title="Survival of Passengers on the Titanic")
 ```
 
+To save the datapackage to file `dpsave` can be used. It expects the package,
+the directory in which to save the package and the data: 
+
+``
+dpsave(pkg, path="./r_examples", iris=iris, titanic=as.data.frame(Titanic))
+
+```
+
+The reason for having to pass the data to `dpsave` is that the data is not
+stored in the datapackage object. The reason for that is that we do not want to
+create multiple copies of the same data set in R's memory. Perhaps in the future
+we will add an option to `dpadd_resource` to store the data in the datapackage.
 
 
 
