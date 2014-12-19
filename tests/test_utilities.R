@@ -1,4 +1,5 @@
 library(testthat)
+library(datapackage)
 
 expect_true(datapackage:::absolute_path("\\\\foo\\bar"))
 expect_true(datapackage:::absolute_path("c:\\foo"))

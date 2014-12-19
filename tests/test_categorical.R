@@ -1,5 +1,5 @@
-
 library(testthat)
+library(datapackage)
 
 x <- as.factor(sample(c("man","vrouw", NA), 20, replace=TRUE))
 

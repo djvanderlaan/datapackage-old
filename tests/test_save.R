@@ -1,4 +1,5 @@
 library(testthat)
+library(datapackage)
 
 generate_strings <- function(n, lmin, lmax) {
   nchar <- sample(seq.int(lmin, lmax), n, replace=TRUE)

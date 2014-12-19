@@ -1,5 +1,5 @@
-
 library(testthat)
+library(datapackage)
 
 expect_that(datapackage:::cast_column_date("2010-10-12"), 
   equals(as.Date("2010-10-12")))

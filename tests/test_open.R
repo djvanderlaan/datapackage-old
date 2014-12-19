@@ -1,4 +1,5 @@
 library(testthat)
+library(datapackage)
 
 testpackage <- system.file("examples/testpackage", package="datapackage")
 p <- dpopen(testpackage)

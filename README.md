@@ -42,5 +42,13 @@ create multiple copies of the same data set in R's memory. Perhaps in the future
 we will add an option to `dpadd_resource` to store the data in the datapackage.
 
 
+Opening a datapackage
+---------------------
+
+A datapackage can de opened using `dpopen`:
+
+```
+pkg <- dpopen("./r_examples")
+```
 
 

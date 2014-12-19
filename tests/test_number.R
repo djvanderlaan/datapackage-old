@@ -1,4 +1,5 @@
 library(testthat)
+library(datapackage)
 
 expect_that(datapackage:::cast_column_number(c("42", "-1.24", "")),
   equals(c(42, -1.24, NA)))

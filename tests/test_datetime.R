@@ -1,5 +1,5 @@
-
 library(testthat)
+library(datapackage)
 
 expect_that(datapackage:::cast_column_datetime(c("2010-10-12T20:30:00Z", "")), 
   equals(as.POSIXct(c("2010-10-12 20:30:00", NA), format="%Y-%m-%d %H:%M:%S", tz="GMT")))

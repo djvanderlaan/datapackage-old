@@ -1,4 +1,5 @@
 library(testthat)
+library(datapackage)
 
 expect_that(datapackage:::cast_column_boolean(c(" 1", "0 ", "")),
   equals(c(TRUE, FALSE, NA)))
