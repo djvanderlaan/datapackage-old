@@ -10,8 +10,7 @@ Creating a datapackage
 A datapackage can be created using the `datapackage` function, which needs a
 name and optionally a title and description:
 
-
-```r
+```{r}
 pkg <- datapackage(name="r_examples", title="Some example data sets from R",
   description="Contains a number of example data sets from base R.")
 ```
@@ -22,31 +21,20 @@ information `dpadd_resource` expects is a data frame and the datapackage to
 which the data resource needs to be added.  Optionally, a name and title can be
 specified. 
 
-
-```r
+```{r}
 pkg <- dpadd_resource(pkg, data=iris, name="iris", 
   title="Edgar Anderson's Iris Data")
-```
 
-```
-## Error in test(field, name): could not find function "is"
-```
-
-```r
 pkg <- dpadd_resource(pkg, data=as.data.frame(Titanic), name="titanic",
   title="Survival of Passengers on the Titanic")
-```
-
-```
-## Error in test(field, name): could not find function "is"
 ```
 
 To save the datapackage to file `dpsave` can be used. It expects the package,
 the directory in which to save the package and the data: 
 
-
-```r
+```{r}
 dpsave(pkg, path="./r_examples", iris=iris, titanic=as.data.frame(Titanic))
+
 ```
 
 The reason for having to pass the data to `dpsave` is that the data is not
@@ -60,8 +48,7 @@ Opening a datapackage
 
 A datapackage can de opened using `dpopen`:
 
-
-```r
+```{r}
 pkg <- dpopen("./r_examples")
 ```
 

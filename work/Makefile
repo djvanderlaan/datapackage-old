@@ -1,6 +1,6 @@
 
 
-.PHONY: build check install test
+.PHONY: build check install test readme
 
 all: build check
 
@@ -17,3 +17,5 @@ install: build
 test: 
 	Rscript test.R
 
+readme: scripts/README.Rmd
+	Rscript scripts/readme.R
