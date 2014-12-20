@@ -26,19 +26,9 @@ specified.
 ```r
 pkg <- dpadd_resource(pkg, data=iris, name="iris", 
   title="Edgar Anderson's Iris Data")
-```
 
-```
-## Error in test(field, name): could not find function "is"
-```
-
-```r
 pkg <- dpadd_resource(pkg, data=as.data.frame(Titanic), name="titanic",
   title="Survival of Passengers on the Titanic")
-```
-
-```
-## Error in test(field, name): could not find function "is"
 ```
 
 To save the datapackage to file `dpsave` can be used. It expects the package,
@@ -64,5 +54,6 @@ A datapackage can de opened using `dpopen`:
 ```r
 pkg <- dpopen("./r_examples")
 ```
+
 
 

@@ -15,7 +15,7 @@ install: build
 	R CMD INSTALL `ls datapackage*.tar.gz | tail -n 1`
 
 test: 
-	Rscript test.R
+	Rscript scripts/test.R
 
 readme: scripts/README.Rmd
 	Rscript scripts/readme.R

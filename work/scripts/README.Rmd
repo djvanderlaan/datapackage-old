@@ -53,3 +53,6 @@ pkg <- dpopen("./r_examples")
 ```
 
 
+```{r,include=FALSE}
+unlink("./r_examples", recursive=TRUE)
+```
