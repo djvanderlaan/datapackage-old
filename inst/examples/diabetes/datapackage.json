@@ -1,0 +1,104 @@
+{
+  "name": "diabetes",
+  "title": "Diabetes and over weight against age and sex",
+  "resources": [
+    {
+      "name": "diabetes",
+      "title": "Diabetes and over weight against age and sex",
+      "schema": {
+        "fields": [
+          {
+            "name": "year",
+            "title": "Year",
+            "type": "date",
+            "format": "yyyy"
+          }, {
+            "name": "age",
+            "title": "Age group",
+            "type": "string",
+            "categories": [
+              {
+                "name": "0 till 25",
+                "title": "0 till 25"
+              }, {
+                "name": "25 till 35",
+                "title": "25 till 35"
+              }, {
+                "name": "35 till 45",
+                "title": "35 till 45"
+              }, {
+                "name": "45 till 55",
+                "title": "45 till 55"
+              }, {
+                "name": "55 till 65",
+                "title": "55 till 65"
+              }, {
+                "name": "65 till 75",
+                "title": "65 till 75"
+              }, {
+                "name": "75+",
+                "title": "75+"
+              }, {
+                "name": "Total",
+                "title": "Total"
+              }
+            ]
+          }, {
+            "name": "sex",
+            "title": "Sex",
+            "type": "string",
+            "categories": [
+              {
+                "name": "Men",
+                "title": "Men"
+              }, {
+                "name": "Women",
+                "title": "Women"
+              }, {
+                "name": "Total",
+                "title": "Total"
+              }
+            ]
+          }, {
+            "name": "diabetes",
+            "title": "Percentage of persons with diabetes",
+            "description": "Percentage of persons with diabetes",
+            "type": "number"
+          }, {
+            "name": "diabetes_type1",
+            "title": "Percentage of persons with diabetes type 1",
+            "description": "Percentage of persons with diabetes type 1",
+            "type": "number"
+          }, {
+            "name": "diabetes_type2",
+            "title": "Percentage of persons with diabetes type 2",
+            "description": "Percentage of persons with diabetes type 2",
+            "type": "number"
+          }, {
+            "name": "underweight",
+            "title": "Percentage of persons that are under weight",
+            "description": "Percentage of persons that are under weight",
+            "type": "number"
+          }, {
+            "name": "normalweight",
+            "title": "Percentage of persons that have a normal weight",
+            "description": "Percentage of persons that have a normal weight",
+            "type": "number"
+          }, {
+            "name": "overweight",
+            "title": "Percentage of persons that are over weight",
+            "description": "Percentage of persons that are over weight",
+            "type": "number"
+          }, {
+            "name": "obese",
+            "title": "Percentage of persons that are obese",
+            "description": "Percentage of persons that are obese",
+            "type": "number"
+          }
+        ]
+      },
+      "path": "diabetes.csv"
+    }
+  ]
+}
+
