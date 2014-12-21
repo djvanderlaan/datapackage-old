@@ -15,11 +15,10 @@ pkg <- datapackage(name="r_examples", title="Some example data sets from R",
   description="Contains a number of example data sets from base R.")
 ```
 
-This datapackage  does not yet contain any datasets. To add data to the
-datapackage the `dpadd_resource` function can be used.  The minimum amount of
-information `dpadd_resource` expects is a data frame and the datapackage to
-which the data resource needs to be added.  Optionally, a name and title can be
-specified. 
+This datapackage  does not yet contain any datasets. Data can be added to the 
+datapackage with `dpadd_resource`.  The minimum amount of information
+`dpadd_resource` expects is a data frame and the datapackage to which the data
+resource needs to be added.  Optionally, a name and title can be specified. 
 
 ```{r}
 pkg <- dpadd_resource(pkg, data=iris, name="iris", 
@@ -34,7 +33,6 @@ the directory in which to save the package and the data:
 
 ```{r}
 dpsave(pkg, path="./r_examples", iris=iris, titanic=as.data.frame(Titanic))
-
 ```
 
 The reason for having to pass the data to `dpsave` is that the data is not
@@ -49,10 +47,28 @@ Opening a datapackage
 A datapackage can de opened using `dpopen`:
 
 ```{r}
-pkg <- dpopen("./r_examples")
+pkg <- dpopen("https://raw.githubusercontent.com/djvanderlaan/datapackage/master/inst/examples/diabetes/datapackage.json")
 ```
+
+A list of resources can be obtained using `dpresources`
+```{r}
+dpresources(pkg)
+```
+
+The data belongin to a specific resource can be opened using `dpdata`
+```{r}
+head(dpdata(pkg, "diabetes"))
+```
+or since by default the first resource is opened `dpdata(pkg)` would give the
+same result.
+
+
+
+
 
 
 ```{r,include=FALSE}
 unlink("./r_examples", recursive=TRUE)
 ```
+
+

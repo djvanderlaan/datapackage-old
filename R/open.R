@@ -17,8 +17,10 @@ dpopen <- function(datapackage) {
     datapackage <- gsub("datapackage\\.json$", "", datapackage)
   # remove trailing (back)slash from path
   datapackage <- gsub("[\\/\\\\]$", "", datapackage)
-  meta <- fromJSON(paste0(datapackage, "/datapackage.json"), 
-    simplifyDataFrame = FALSE)
+  meta_fn <- download_file(paste0(datapackage, "/datapackage.json"))
+  meta <- fromJSON(meta_fn, simplifyDataFrame = FALSE)
+  #meta <- fromJSON(paste0(datapackage, "/datapackage.json"), 
+  #  simplifyDataFrame = FALSE)
   structure(meta, class="datapackage", base_url=datapackage)
 }
 

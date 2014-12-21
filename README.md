@@ -16,11 +16,10 @@ pkg <- datapackage(name="r_examples", title="Some example data sets from R",
   description="Contains a number of example data sets from base R.")
 ```
 
-This datapackage  does not yet contain any datasets. To add data to the
-datapackage the `dpadd_resource` function can be used.  The minimum amount of
-information `dpadd_resource` expects is a data frame and the datapackage to
-which the data resource needs to be added.  Optionally, a name and title can be
-specified. 
+This datapackage  does not yet contain any datasets. Data can be added to the 
+datapackage with `dpadd_resource`.  The minimum amount of information
+`dpadd_resource` expects is a data frame and the datapackage to which the data
+resource needs to be added.  Optionally, a name and title can be specified. 
 
 
 ```r
@@ -52,8 +51,49 @@ A datapackage can de opened using `dpopen`:
 
 
 ```r
-pkg <- dpopen("./r_examples")
+pkg <- dpopen("https://raw.githubusercontent.com/djvanderlaan/datapackage/master/inst/examples/diabetes/datapackage.json")
 ```
+
+A list of resources can be obtained using `dpresources`
+
+```r
+dpresources(pkg)
+```
+
+```
+## [1] "diabetes"
+```
+
+The data belongin to a specific resource can be opened using `dpdata`
+
+```r
+head(dpdata(pkg, "diabetes"))
+```
+
+```
+##         year       age   sex diabetes diabetes_type1 diabetes_type2
+## 1 2001-01-01     Total Total      2.8            0.6            2.2
+## 2 2001-01-01     Total   Men      3.5            0.8            2.7
+## 3 2001-01-01     Total Women      2.2            0.5            1.7
+## 4 2001-01-01 0 till 25 Total      0.3            0.3            0.0
+## 5 2001-01-01 0 till 25   Men      0.3            0.3            0.0
+## 6 2001-01-01 0 till 25 Women      0.3            0.3            0.0
+##   underweight normalweight overweight obese
+## 1         1.7         53.5       35.4   9.3
+## 2         0.9         49.1       41.8   8.3
+## 3         2.5         57.9       29.2  10.3
+## 4         4.3         76.5       17.0   2.2
+## 5         1.2         78.7       18.5   1.6
+## 6         7.6         74.2       15.4   2.7
+```
+or since by default the first resource is opened `dpdata(pkg)` would give the
+same result.
+
+
+
+
+
+
 
 
 
