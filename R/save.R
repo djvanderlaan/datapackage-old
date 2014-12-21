@@ -55,7 +55,7 @@ dpsave <- function(meta, path, ...) {
   }
   # save meta data
   attr(meta, "base_url") <- path
-  data <- toJSON(unclass(meta), auto_unbox = TRUE)
+  data <- toJSON(unclass(meta), auto_unbox = TRUE, pretty=2)
   con <- file("datapackage.json", "wt", encoding = "UTF-8")
   writeLines(data, con = con)
   close(con)
