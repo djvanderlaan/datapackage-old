@@ -28,3 +28,12 @@ expect_that(dpformat(fld), equals(NULL))
 dpformat(fld) <- "foo bar"
 expect_that(fld[["format"]], equals("foo bar"))
 
+
+# Modify resource
+r <- dpresource(pkg)
+dptitle(r) <- "Iris"
+dpresource(pkg) <- r
+expect_that(pkg$resources[[1]]$title, equals("Iris"))
+
+
+

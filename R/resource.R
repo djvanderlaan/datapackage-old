@@ -13,15 +13,17 @@ dpresources <- function(meta) {
   })
 }
 
-#' Get the meta data of a specific resource from a datapackage
+#' Get or set the meta data of a specific resource from a datapackage
 #' 
 #' @param meta a \code{\link{datapackage}} object
-#' @param resource an identifier of the the resource. This can be a numeric
+#' @param resource an identifier of the resource. This can be a numeric
 #'   index, or a character with the name of the resource. 
+#' @param value a \code{dpresource} object
 #'
 #' @return 
-#' Returns a \code{dpresource} object. 
+#' \code{dpresource} returns a \code{dpresource} object. 
 #' 
+#' @rdname dpresource
 #' @export
 dpresource <- function(meta, resource = 1) {
   if (is(meta, "dpresource")) return(meta)
@@ -30,6 +32,19 @@ dpresource <- function(meta, resource = 1) {
   res <- meta$resources[[res]]
   structure(res, class="dpresource", base_url = attr(meta, "base_url"))
 }
+
+#' @rdname dpresource
+#' @export
+`dpresource<-` <- function(meta, resource = 1, value) {
+  if (!is(value, "dpresource")) 
+    stop("value should be a 'dpresource'.")
+  if (is(meta, "dpresource")) return(value)
+  res <- resource_index(meta, resource)
+  if (is.null(res)) stop("Could not find resource '", resource, "'.")
+  meta$resources[[res]] <- value
+  meta
+}
+
 
 #' Add a resource to a \code{\link{datapackage}}
 #'
