@@ -15,7 +15,7 @@ object in which case the \code{resource} argument is ignored.}
 index, or a character with the name of the resource.}
 }
 \value{
-Returns an object of type \code{dpfieldmeta}.
+Returns an object of type \code{dpfield}.
 }
 \description{
 Get the meta data of a single field

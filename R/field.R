@@ -25,7 +25,7 @@ dpfields <- function(meta, resource = 1) {
 #' @param field the name or number of the field. 
 #'
 #' @return
-#' Returns an object of type \code{dpfieldmeta}.
+#' Returns an object of type \code{dpfield}.
 #'
 #' @export
 dpfield <- function(meta, field, resource = 1) {
