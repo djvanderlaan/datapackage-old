@@ -36,8 +36,7 @@ dpresource <- function(meta, resource = 1) {
 #' @rdname dpresource
 #' @export
 `dpresource<-` <- function(meta, resource = 1, value) {
-  if (!is(value, "dpresource")) 
-    stop("value should be a 'dpresource'.")
+  if (!is(value, "dpresource")) stop("value should be a 'dpresource'.")
   if (is(meta, "dpresource")) return(value)
   res <- resource_index(meta, resource)
   if (is.null(res)) stop("Could not find resource '", resource, "'.")

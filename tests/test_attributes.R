@@ -36,4 +36,13 @@ dpresource(pkg) <- r
 expect_that(pkg$resources[[1]]$title, equals("Iris"))
 
 
+f <- dpfield(pkg, "Sepal.Length")
+dptitle(f) <- "Sepal length"
+dpfield(pkg, "Sepal.Length") <- f
+expect_that(dptitle(dpfield(pkg, "Sepal.Length")), equals("Sepal length"))
+
+dptitle(dpfield(pkg, "Sepal.Length")) <- "Foobar"
+expect_that(dptitle(dpfield(pkg, "Sepal.Length")), equals("Foobar"))
+
+
 

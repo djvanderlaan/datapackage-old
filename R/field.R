@@ -16,17 +16,19 @@ dpfields <- function(meta, resource = 1) {
   sapply(fields, function(d) d$name)
 }
 
-#' Get the meta data of a single field
+#' Get and set the meta data of a single field
 #'
 #' @param meta a \code{\link{datapackage}} object or a \code{\link{dpresource}}
 #'   object in which case the \code{resource} argument is ignored.
 #' @param resource an identifier of the the resource. This can be a numeric
 #'   index, or a character with the name of the resource. 
 #' @param field the name or number of the field. 
+#' @param value a \code{dpfield} object to assign to the field.
 #'
 #' @return
-#' Returns an object of type \code{dpfield}.
+#' \code{dpfield} returns an object of type \code{dpfield}.
 #'
+#' @rdname dpfield
 #' @export
 dpfield <- function(meta, field, resource = 1) {
   resource <- dpresource(meta, resource)
@@ -48,6 +50,36 @@ dpfield <- function(meta, field, resource = 1) {
     stop("field '", field, "' could not be found.")
   structure(var, class="dpfield")
 }
+
+#' @rdname dpfield
+#' @export
+`dpfield<-` <- function(meta, field, resource = 1, value) {
+  if (!is(value, "dpfield")) stop("value should be a 'dpfield'.")
+  r <- dpresource(meta, resource)
+  if (length(field) != 1) stop("field needs to be of length 1.")
+  index <- field
+  if (is.character(field)) {
+    index <- NULL
+    for (i in seq_along(r$schema$fields)) {
+      tmp <- r$schema$fields[[i]]
+      if (tmp$name == field) {
+        index <- i
+        break;
+      }
+    }
+    if (is.null(index)) 
+      stop("Field '", field, "' does not exist in resource.")
+  }
+  if (!is.numeric(index))
+    stop("field needs to be either of type character or numeric.")
+  if (index < 0 || index > length(r$schema$fields))
+    stop("Field does not exist in resource.")
+  r$schema$fields[[index]] <- value
+  if (is(meta, "datapackage")) 
+    dpresource(meta, resource) <- r
+  meta
+}
+
 
 #' Print a \code{\link{dpfield}} object
 #'
