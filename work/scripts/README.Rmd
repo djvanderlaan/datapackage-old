@@ -11,7 +11,7 @@ A datapackage can be created using the `datapackage` function, which needs a
 name and optionally a title and description:
 
 ```{r}
-pkg <- datapackage(name="r_examples", title="Some example data sets from R",
+examples <- datapackage(name="r_examples", title="Some example data sets from R",
   description="Contains a number of example data sets from base R.")
 ```
 
@@ -21,10 +21,10 @@ datapackage with `dpadd_resource`.  The minimum amount of information
 resource needs to be added.  Optionally, a name and title can be specified. 
 
 ```{r}
-pkg <- dpadd_resource(pkg, data=iris, name="iris", 
+examples <- dpadd_resource(examples, data=iris, name="iris", 
   title="Edgar Anderson's Iris Data")
 
-pkg <- dpadd_resource(pkg, data=as.data.frame(Titanic), name="titanic",
+examples <- dpadd_resource(examples, data=as.data.frame(Titanic), name="titanic",
   title="Survival of Passengers on the Titanic")
 ```
 
@@ -32,7 +32,7 @@ To save the datapackage to file `dpsave` can be used. It expects the package,
 the directory in which to save the package and the data: 
 
 ```{r}
-dpsave(pkg, path="./r_examples", iris=iris, titanic=as.data.frame(Titanic))
+dpsave(examples, path="./r_examples", iris=iris, titanic=as.data.frame(Titanic))
 ```
 
 The reason for having to pass the data to `dpsave` is that the data is not
@@ -61,6 +61,57 @@ head(dpdata(pkg, "diabetes"))
 ```
 or since by default the first resource is opened `dpdata(pkg)` would give the
 same result.
+
+
+
+Manipulation datapackages
+-------------------------
+
+
+In the example below, we first retrieve the meta data belonging to the field
+'Sepal.Length' of the `examples` datapackage we created above: 
+```{r}
+(f <- dpfield(examples, "Sepal.Length", resource="iris"))
+```
+The title and description of this field can be changed using `dptitle` and
+`dpdescription` respectively: 
+```{r}
+dptitle(f) <- "Sepal length"
+dpdescription(f) <- "Length of the sepal"
+f
+```
+
+Other commands that can be used are `dpname` and `dptype` and `dpformat`. The
+last two are spefic for field descriptions. The other commands can also be used
+to modify resources and datapackages. All of these functions are shortcuts for
+the more general `dpattr` which can be used to set any attribute of a meta data
+object. For example, `dptitle(f)` is just a shortcut for `dpattr(f, "title")`.
+`dpattr` can be used to set fields which are not specifically defined in the
+tabular datapackage format, such as a unit for a field:
+```{r}
+dpattr(f, "unit") <- "cm"
+```
+
+With the commands, the field `f` has been modified, but these modification are
+not yet part of the datapackage `examples`. In order to modify the datapackage,
+the newly defined field definition needs to be assigned to the datapackage:
+```{r}
+dpfield(examples, "Sepal.Length", resource="iris") <- f
+```
+
+It is also possible to change the field information directly in the datapackage
+object by nesting the `dpfield` and `dpattr` calls as in:
+```{r}
+dptitle(dpfield(examples, "Sepal.Length", resource="iris")) <- "Sepal length"
+```
+
+As was mentioned above the `dpattr`, `dptitle`, ... commands can also be used
+for resources and datapackages. For example, to change the title of a resource:
+
+```{r}
+dptitle(dpresource(examples, "iris")) <- "The Iris data set"
+```
+
 
 
 
