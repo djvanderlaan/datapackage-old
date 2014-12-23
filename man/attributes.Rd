@@ -4,11 +4,20 @@
 \alias{dpattr.datapackage}
 \alias{dpattr.dpfield}
 \alias{dpattr.dpresource}
+\alias{dpattr<-}
+\alias{dpattr<-.datapackage}
+\alias{dpattr<-.dpfield}
+\alias{dpattr<-.dpresource}
 \alias{dpdescription}
+\alias{dpdescription<-}
 \alias{dpformat}
+\alias{dpformat<-}
 \alias{dpname}
+\alias{dpname<-}
 \alias{dptitle}
+\alias{dptitle<-}
 \alias{dptype}
+\alias{dptype<-}
 \title{Get and set the attributes in datapackage meta data}
 \usage{
 dpattr(meta, attribute, ...)
@@ -19,6 +28,14 @@ dpattr(meta, attribute, ...)
 
 \method{dpattr}{dpfield}(meta, attribute, ...)
 
+dpattr(meta, attribute) <- value
+
+\method{dpattr}{datapackage}(meta, attribute) <- value
+
+\method{dpattr}{dpresource}(meta, attribute) <- value
+
+\method{dpattr}{dpfield}(meta, attribute) <- value
+
 dptitle(meta, ...)
 
 dpname(meta, ...)
@@ -28,6 +45,16 @@ dpdescription(meta, ...)
 dptype(meta, ...)
 
 dpformat(meta, ...)
+
+dptitle(meta) <- value
+
+dpname(meta) <- value
+
+dpdescription(meta) <- value
+
+dptype(meta) <- value
+
+dpformat(meta) <- value
 }
 \arguments{
 \item{meta}{the meta data for which the attribute needs to be set or get.
@@ -37,6 +64,8 @@ This can be an object of type \code{\link{datapackage}},
 \item{attribute}{the name of the attribute that needs to be set.}
 
 \item{...}{currently unused.}
+
+\item{value}{the value to which the attribute should be set.}
 }
 \description{
 Get and set the attributes in datapackage meta data
